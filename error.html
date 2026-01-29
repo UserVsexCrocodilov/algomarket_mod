@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Астро-Маркет МОД | Ошибка</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="star.381fbadb0f85.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="algoritmika.5ef0fb315cdc.css" rel="stylesheet">
+    <link href="style.52676baf2c75.css" rel="stylesheet">
+    <!-- ❄️ Новогодний снег -->
+    <link href="snow.min.d391e45469ff.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+            background: linear-gradient(45deg, #6a3d9f, #8a5cbf);
+            color: white !important;
+            border: none;
+        }
+        
+        .card-header h4 {
+            color: white !important;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #6a3d9f, #8a5cbf);
+            border: none;
+            border-radius: 10px;
+            padding: 0.6rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #8a5cbf, #6a3d9f);
+            box-shadow: 0 4px 15px rgba(106, 61, 159, 0.4);
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e3e6f0;
+            padding: 0.6rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #6a3d9f;
+            box-shadow: 0 0 0 0.2rem rgba(106, 61, 159, 0.25);
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 600;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- ❄️ Новогодний снегопад -->
+    <script src="snow.min.303dd5556fc0.js"></script>
+    <script>
+        var snowEnabled = localStorage.getItem('snowEnabled');
+        var snowInstance = null;
+        if (snowEnabled === null) {
+            snowEnabled = 'true';
+            localStorage.setItem('snowEnabled', 'true');
+        }
+        function initSnow() {
+            if (snowInstance) return;
+            snowInstance = new Snow({
+                countSnowflake: 55,
+                iconColor: '#ffffff',
+                iconSize: 12,
+                showSnowBalls: false,
+                showSnowBallsIsMobile: false,
+            });
+        }
+        function destroySnow() {
+            var snowflakesBox = document.querySelector('.snowflakes-box');
+            var snowballBox = document.querySelector('.snowball-box');
+            if (snowflakesBox) snowflakesBox.remove();
+            if (snowballBox) snowballBox.remove();
+            if (snowInstance && snowInstance.destroy) snowInstance.destroy();
+            snowInstance = null;
+        }
+        function toggleSnow() {
+            var enabled = localStorage.getItem('snowEnabled') === 'true';
+            if (enabled) {
+                localStorage.setItem('snowEnabled', 'false');
+                destroySnow();
+                updateSnowButton(false);
+            } else {
+                localStorage.setItem('snowEnabled', 'true');
+                initSnow();
+                updateSnowButton(true);
+            }
+        }
+        function updateSnowButton(enabled) {
+            var btn = document.getElementById('snowToggleBtn');
+            if (btn) {
+                btn.innerHTML = enabled ? '<i class="fas fa-snowflake"></i>' : '<i class="fas fa-snowflake" style="opacity: 0.4;"></i>';
+                btn.title = enabled ? 'Выключить снег' : 'Включить снег';
+            }
+        }
+        if (snowEnabled === 'true') initSnow();
+    </script>
+
+    <!-- Простая навигация только с логотипом -->
+    <nav class="navbar navbar-expand-lg mb-4">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="star.381fbadb0f85.png" alt="Star" width="30" height="30" class="me-2">
+                Астро-Маркет МОД
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <!-- ❄️ Кнопка снега -->
+                <li class="nav-item">
+                    <button class="nav-link btn btn-link" id="snowToggleBtn" onclick="toggleSnow()" title="Выключить снег" style="border: none; background: none; cursor: pointer;">
+                        <i class="fas fa-snowflake"></i>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-sign-in-alt me-2"></i>Войти
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Сообщения -->
+    <div class="container mb-4">
+        
+    </div>
+
+    <!-- Основной контент -->
+    <main class="flex-grow-1">
+        
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Ошибка!</h4>
+                    <h4> Не удалось найти аккаунт, попробуйте ещё раз. </h1>
+                    <h4> Если проблема не уйдет, значит сервера недоступны.</h1>
+</script>
+
+    </main>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var snowEnabled = localStorage.getItem('snowEnabled') !== 'false';
+            updateSnowButton(snowEnabled);
+        });
+    </script>
+</body>
+</html>
